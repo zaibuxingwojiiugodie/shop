@@ -18,7 +18,7 @@
                 <tr>
                     <td width="30">{$row.id}<input type="checkbox" name="id[]" class="ids" value="{$row.id}"/></td>
                     <td class="first-cell">{$row.name}</td><td align="center">{$row.url}</td>
-                    <td align="center"><img width="30px" src="__BRAND__{$row.logo}"/></td>
+                    <td align="center"><img src="__BRAND__{$row.logo}!m"/></td>
                     <td align="center">{$row.sort}</td>
                     <td align="center">{$row.intro}</td>
                     <td align="center"><a class="ajax_get" href="{:U('changeStatus',array('id'=>$row['id'],'status'=>(1-$row['status'])))}"><img src="__IMG__/{$row.status}.gif"/></a></td>
