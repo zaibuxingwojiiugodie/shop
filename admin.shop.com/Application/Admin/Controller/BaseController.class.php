@@ -9,6 +9,7 @@ class BaseController extends Controller
 {
 
     protected $model;
+    protected $usePostParams=false;//是否使用post中的所有数据,默认为false不使用
 
     public function index()
     {
@@ -54,7 +55,7 @@ class BaseController extends Controller
             //post提交时需要create收集数据并将其添加到数据库中
             if ($this->model->create() !== false) {//收集到了数据将将其用add方法添加
                 //判断,添加成功时跳转,失败时提示信息
-                if ($this->model->add() !== false) {
+                if ($this->model->add($this->usePostParams?I('post.'):'')!== false) {
                     $this->success("添加成功..", U("index"));
                 } else {
                     //添加失败提示错误信息
@@ -80,7 +81,7 @@ class BaseController extends Controller
         } else {
             //post提交时用create方法收集数据,并用save方法更新到数据库涨
             if ($this->model->create() !== false) {//有数据时进行更新操作
-                if ($this->model->save() !== false) {
+                if ($this->model->save($this->usePostParams?I('post.'):'') !== false) {
                     //更新成功时跳转到cookie中保存的当前页面
                     $this->success("更新成功...", cookie("__nowurl__"));
                     return;

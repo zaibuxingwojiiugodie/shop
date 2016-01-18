@@ -79,13 +79,6 @@
                 'formData': {'dir': 'xluo-brand-logo'},
                 'swf': '__UPLOADIFY__/uploadify.swf',//这个是flash插件的地址
                 'uploader': "{:U('Upload/index')}",//这个是处理插件上传的文件.Upload控制器的index方法
-
-                //上传成功
-//                'onUploadSuccess':function(file, data, response){//其中data是响应的上传成功后的地址
-//                    $(".upload-img-box").show();//显示出隐藏的预览图片的div
-//                    $('.upload-img-box .upload-pre-item img').attr('src','__BRAND__'+data);//将上传的图片在div中预览
-//
-//            },
                 'onUploadSuccess' : function(file, data, response) {  //data就是响应的 上传后的地址
                     $('.upload-img-box').show(); //显示出div
                     $('.upload-img-box .upload-pre-item img').attr('src','__BRAND__'+data);

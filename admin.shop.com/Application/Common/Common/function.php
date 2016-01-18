@@ -17,7 +17,7 @@ function show_model_error($model)
 }
 function arr2select($name,$rows,$defalutValue="" ,$valueField="id",$textField="name"){
 //    dump(func_get_args());
-    $select_html='<select class="{$name}" name="{$name}">';
+    $select_html="<select class='{$name}' name='{$name}'>";
     $select_html.="<option value=''>--请选择--</option>";
     foreach($rows as $row){
         $selected="";
@@ -25,9 +25,41 @@ function arr2select($name,$rows,$defalutValue="" ,$valueField="id",$textField="n
         if($row[$valueField]===$defalutValue){
             $selected="selected";
         }
-        $select_html.="<option value='{$row['id']}'>{$row['name']}</option>";
+        $select_html.="<option value='{$row[$valueField]}' {$selected}>{$row[$textField]}</option>";
     }
     $select_html.='</select>';
 //    dump($select_html);
     echo $select_html;
+}
+
+
+
+function i_array_column($input, $columnKey, $indexKey=null){
+    if(!function_exists('array_column')){
+        $columnKeyIsNumber  = (is_numeric($columnKey))?true:false;
+        $indexKeyIsNull            = (is_null($indexKey))?true :false;
+        $indexKeyIsNumber     = (is_numeric($indexKey))?true:false;
+        $result                         = array();
+        foreach((array)$input as $key=>$row){
+            if($columnKeyIsNumber){
+                $tmp= array_slice($row, $columnKey, 1);
+                $tmp= (is_array($tmp) && !empty($tmp))?current($tmp):null;
+            }else{
+                $tmp= isset($row[$columnKey])?$row[$columnKey]:null;
+            }
+            if(!$indexKeyIsNull){
+                if($indexKeyIsNumber){
+                    $key = array_slice($row, $indexKey, 1);
+                    $key = (is_array($key) && !empty($key))?current($key):null;
+                    $key = is_null($key)?0:$key;
+                }else{
+                    $key = isset($row[$indexKey])?$row[$indexKey]:0;
+                }
+            }
+            $result[$key] = $tmp;
+        }
+        return $result;
+    }else{
+        return array_column($input, $columnKey, $indexKey);
+    }
 }

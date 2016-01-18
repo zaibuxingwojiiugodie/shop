@@ -23,7 +23,18 @@
             <volist name="rows" id="row">
                 <tr>
                     <td width="30">{$row.id}<input type="checkbox" name="id[]" class="ids" value="{$row.id}"/></td>
-                    <td class="first-cell">{$row.name}</td><td align="center">{$row.short_name}</td><td align="center">{$row.sn}</td><td align="center">{$row.goods_category_id}</td><td align="center">{$row.brand_id}</td><td align="center">{$row.supplier_id}</td><td align="center">{$row.shop_price}</td><td align="center">{$row.market_price}</td><td align="center">{$row.logo}</td><td align="center">{$row.stock}</td><td align="center">{$row.goods_status}</td><td align="center"><a class="ajax_get" href="{:U('changeStatus',array('id'=>$row['id'],'status'=>(1-$row['status'])))}"><img src="__IMG__/{$row.status}.gif"/></a></td>
+                    <td class="first-cell">{$row.name}</td>
+                    <td align="center">{$row.short_name}</td>
+                    <td align="center">{$row.sn}</td>
+                    <td align="center">{$row.goods_category_name}</td>
+                    <td align="center">{$row.brand_name}</td>
+                    <td align="center">{$row.supplier_name}</td>
+                    <td align="center">{$row.shop_price}</td>
+                    <td align="center">{$row.market_price}</td>
+                    <td align="center"><img src="__GOODS__{$row.logo}!m"/></td>
+                    <td align="center">{$row.stock}</td>
+                    <td align="center">{$row.goods_status}</td>
+                    <td align="center"><a class="ajax_get" href="{:U('changeStatus',array('id'=>$row['id'],'status'=>(1-$row['status'])))}"><img src="__IMG__/{$row.status}.gif"/></a></td>
                     <td align="center">
                         <a href="{:U('edit',array('id'=>$row['id']))}" title="编辑">编辑</a> |
                         <a  class="ajax_get" href="{:U('changeStatus',array('id'=>$row['id']))}" title="移除">移除</a>

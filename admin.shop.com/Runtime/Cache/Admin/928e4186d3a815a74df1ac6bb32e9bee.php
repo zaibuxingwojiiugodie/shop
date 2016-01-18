@@ -4,9 +4,9 @@
 <title>ECSHOP 管理中心 - <?php echo ($meta_title); ?> </title>
 <meta name="robots" content="noindex, nofollow">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<link href="http://www.xluo.com/shop/admin.shop.com/Public/Admin/css/general.css" rel="stylesheet" type="text/css" />
-<link href="http://www.xluo.com/shop/admin.shop.com/Public/Admin/css/main.css" rel="stylesheet" type="text/css" />
-<link href="http://www.xluo.com/shop/admin.shop.com/Public/Admin/css/page.css" rel="stylesheet" type="text/css" />
+<link href="http://admin.shop.com/Public/Admin/css/general.css" rel="stylesheet" type="text/css" />
+<link href="http://admin.shop.com/Public/Admin/css/main.css" rel="stylesheet" type="text/css" />
+<link href="http://admin.shop.com/Public/Admin/css/page.css" rel="stylesheet" type="text/css" />
 
 </head>
 <body>
@@ -19,7 +19,7 @@
 
 <div class="form-div">
     <form action="<?php echo U();?>" method="get" name="searchForm">
-    <img src="http://www.xluo.com/shop/admin.shop.com/Public/Admin/images/icon_search.gif" width="26" height="22" border="0" alt="search" />
+    <img src="http://admin.shop.com/Public/Admin/images/icon_search.gif" width="26" height="22" border="0" alt="search" />
     <input type="text" name="keyword" size="15" value="<?php echo ($_GET['keyword']); ?>" />
     <input type="submit" value=" 搜索 " class="button" />
     </form>
@@ -52,7 +52,18 @@
             </tr>
             <?php if(is_array($rows)): $i = 0; $__LIST__ = $rows;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$row): $mod = ($i % 2 );++$i;?><tr>
                     <td width="30"><?php echo ($row["id"]); ?><input type="checkbox" name="id[]" class="ids" value="<?php echo ($row["id"]); ?>"/></td>
-                    <td class="first-cell"><?php echo ($row["name"]); ?></td><td align="center"><?php echo ($row["short_name"]); ?></td><td align="center"><?php echo ($row["sn"]); ?></td><td align="center"><?php echo ($row["goods_category_id"]); ?></td><td align="center"><?php echo ($row["brand_id"]); ?></td><td align="center"><?php echo ($row["supplier_id"]); ?></td><td align="center"><?php echo ($row["shop_price"]); ?></td><td align="center"><?php echo ($row["market_price"]); ?></td><td align="center"><?php echo ($row["logo"]); ?></td><td align="center"><?php echo ($row["stock"]); ?></td><td align="center"><?php echo ($row["goods_status"]); ?></td><td align="center"><a class="ajax_get" href="<?php echo U('changeStatus',array('id'=>$row['id'],'status'=>(1-$row['status'])));?>"><img src="http://www.xluo.com/shop/admin.shop.com/Public/Admin/images/<?php echo ($row["status"]); ?>.gif"/></a></td>
+                    <td class="first-cell"><?php echo ($row["name"]); ?></td>
+                    <td align="center"><?php echo ($row["short_name"]); ?></td>
+                    <td align="center"><?php echo ($row["sn"]); ?></td>
+                    <td align="center"><?php echo ($row["goods_category_id"]); ?></td>
+                    <td align="center"><?php echo ($row["brand_id"]); ?></td>
+                    <td align="center"><?php echo ($row["supplier_id"]); ?></td>
+                    <td align="center"><?php echo ($row["shop_price"]); ?></td>
+                    <td align="center"><?php echo ($row["market_price"]); ?></td>
+                    <td align="center"><img src="http://xluo-goods-logo.b0.upaiyun.com/<?php echo ($row["logo"]); ?>!m"/></td>
+                    <td align="center"><?php echo ($row["stock"]); ?></td>
+                    <td align="center"><?php echo ($row["goods_status"]); ?></td>
+                    <td align="center"><a class="ajax_get" href="<?php echo U('changeStatus',array('id'=>$row['id'],'status'=>(1-$row['status'])));?>"><img src="http://admin.shop.com/Public/Admin/images/<?php echo ($row["status"]); ?>.gif"/></a></td>
                     <td align="center">
                         <a href="<?php echo U('edit',array('id'=>$row['id']));?>" title="编辑">编辑</a> |
                         <a  class="ajax_get" href="<?php echo U('changeStatus',array('id'=>$row['id']));?>" title="移除">移除</a>
@@ -68,9 +79,9 @@
 <div id="footer">
 共执行 3 个查询，用时 0.021251 秒，Gzip 已禁用，内存占用 2.194 MB<br />
 版权所有 &copy; 2005-2012 上海商派网络科技有限公司，并保留所有权利。</div>
-<script type="text/javascript" src="http://www.xluo.com/shop/admin.shop.com/Public/Admin/js/jquery-1.11.2.js"></script>
-<script type="text/javascript" src="http://www.xluo.com/shop/admin.shop.com/Public/Admin/layer/layer.js"></script>
-<script type="text/javascript" src="http://www.xluo.com/shop/admin.shop.com/Public/Admin/js/common.js"></script>
+<script type="text/javascript" src="http://admin.shop.com/Public/Admin/js/jquery-1.11.2.js"></script>
+<script type="text/javascript" src="http://admin.shop.com/Public/Admin/layer/layer.js"></script>
+<script type="text/javascript" src="http://admin.shop.com/Public/Admin/js/common.js"></script>
 
 </body>
 </html>

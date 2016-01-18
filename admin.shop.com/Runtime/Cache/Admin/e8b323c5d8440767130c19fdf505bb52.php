@@ -25,9 +25,11 @@
     </form>
 </div>
 
-<input type="button" value="删除" class="button ajax_post" url="<?php echo U('changeStatus');?>"/>
-<input type="button" value="显示" class="button ajax_post" url="<?php echo U('changeStatus',array('status'=>1));?>"/>
-<input type="button" value="隐藏" class="button ajax_post" url="<?php echo U('changeStatus',array('status'=>0));?>"/>
+
+    <input type="button" value="删除" class="button ajax_post" url="<?php echo U('changeStatus');?>"/>
+    <input type="button" value="显示" class="button ajax_post" url="<?php echo U('changeStatus',array('status'=>1));?>"/>
+    <input type="button" value="隐藏" class="button ajax_post" url="<?php echo U('changeStatus',array('status'=>0));?>"/>
+
 
     <div class="list-div" id="listDiv">
         <table cellpadding="3" cellspacing="1">
@@ -44,7 +46,11 @@
             </tr>
             <?php if(is_array($rows)): $i = 0; $__LIST__ = $rows;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$row): $mod = ($i % 2 );++$i;?><tr>
                     <td width="30"><?php echo ($row["id"]); ?><input type="checkbox" name="id[]" class="ids" value="<?php echo ($row["id"]); ?>"/></td>
-                    <td class="first-cell"><?php echo ($row["name"]); ?></td><td align="center"><?php echo ($row["url"]); ?></td><td align="center"><?php echo ($row["logo"]); ?></td><td align="center"><?php echo ($row["sort"]); ?></td><td align="center"><?php echo ($row["intro"]); ?></td><td align="center"><a class="ajax_get" href="<?php echo U('changeStatus',array('id'=>$row['id'],'status'=>(1-$row['status'])));?>"><img src="http://admin.shop.com/Public/Admin/images/<?php echo ($row["status"]); ?>.gif"/></a></td>
+                    <td class="first-cell"><?php echo ($row["name"]); ?></td><td align="center"><?php echo ($row["url"]); ?></td>
+                    <td align="center"><img src="http://xluo-brand-logo.b0.upaiyun.com/<?php echo ($row["logo"]); ?>!m"/></td>
+                    <td align="center"><?php echo ($row["sort"]); ?></td>
+                    <td align="center"><?php echo ($row["intro"]); ?></td>
+                    <td align="center"><a class="ajax_get" href="<?php echo U('changeStatus',array('id'=>$row['id'],'status'=>(1-$row['status'])));?>"><img src="http://admin.shop.com/Public/Admin/images/<?php echo ($row["status"]); ?>.gif"/></a></td>
                     <td align="center">
                         <a href="<?php echo U('edit',array('id'=>$row['id']));?>" title="编辑">编辑</a> |
                         <a  class="ajax_get" href="<?php echo U('changeStatus',array('id'=>$row['id']));?>" title="移除">移除</a>

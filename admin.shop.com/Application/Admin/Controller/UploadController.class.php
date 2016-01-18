@@ -11,12 +11,9 @@ class UploadController extends Controller
 {
     public function index()
     {
-//        dump($_FILES);
         //获取浏览器指定的服务(空间
         $dir=I("post.dir");
         $config = array(
-//            'rootPath'     => './Uploads/', //保存根路径
-//            'savePath'     => $dir.'/', //保存路径
             'rootPath'     => './', //保存到upyun的根路径
             'driver'=>'Upyun',
             'driverConfig' => array(

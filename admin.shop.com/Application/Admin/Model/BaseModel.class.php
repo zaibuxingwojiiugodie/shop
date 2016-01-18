@@ -24,10 +24,11 @@ class BaseModel extends Model
     public function getPage($wheres = array())
     {//设置默认值则在调用时可以不用传入参数都可以
         //查询条件, 分页的数据和总条数数据都是需要查询出状态大于1的记录
-        $wheres["status"] = array("gt", -1);
+        $wheres["obj.status"] = array("gt", -1);
         //准备分页工具条
         $pageHtml = "";
         $pageSize = 5;  //每页多少条
+        $this->alias('obj');
         $count = $this->where($wheres)->count();  //总条数
         $page = new Page($count, $pageSize);
         $pageHtml = $page->show();//生成分页的html
@@ -37,14 +38,24 @@ class BaseModel extends Model
             //起始条数= 总条数-每页多少条
             $page->firstRow = $count - $page->listRows;
         }
+        //为表取个别名
+        $this->alias('obj');
+        $this->_setModel();//调用钩子方法
         //得到分页后的每页的数据...
         $row = $this->where($wheres)->limit($page->firstRow, $page->listRows)->select();
         //返回分页数据
         return array("rows" => $row, "pageHtml" => $pageHtml);
     }
+    //钩子方法主要用于被子类覆盖
+    protected function _setModel(){
+
+    }
+
+
 //查询出正常状态的数据
-    public function getList($field="*")
+    public function getList($field = "*",$wheres=array())
     {
-        return $this->field($field)->where(array('status' => array('gt', -1)))->select();
+        $wheres['status'] = array('gt', -1);
+        return $this->field($field)->where($wheres)->select();
     }
 }
